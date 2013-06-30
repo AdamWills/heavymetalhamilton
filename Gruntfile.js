@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 livereload: true,
             },
             compass: {
-                files: ['library/scss/**/*.{scss,sass}'],
+                files: ['scss/**/*.{scss,sass}'],
                 tasks: ['compass']
             },
             js: {
@@ -20,7 +20,8 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'uglify']
             },
             livereload: {
-                files: ['*.html', '*.php', 'library/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                options: { livereload: true },
+                files: ['style.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -50,15 +51,15 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 options: {
-                    sourceMap: 'library/js/map/source-map.js'
+                    sourceMap: 'js/map/source-map.js'
                 },
                 files: {
-                    'library/js/plugins.min.js': [
-                        'library/js/libs/**/*.js',
-                        '!library/js/libs/modernizr*.js'
+                    'js/plugins.min.js': [
+                        'js/lib/**/*.js',
+                        '!js/libs/modernizr*.js'
                     ],
-                    'library/js/main.min.js': [
-                        'library/js/scripts.js'
+                    'js/main.min.js': [
+                        'js/scripts.js'
                     ]
                 }
             }
@@ -73,9 +74,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'library/images/',
+                    cwd: 'img/',
                     src: '**/*',
-                    dest: 'library/images/'
+                    dest: 'img/'
                 }]
             }
         },
